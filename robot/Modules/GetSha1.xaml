@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>751,645</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>751,618</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetSha1_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="27">
@@ -70,16 +70,17 @@
       <AssemblyReference>UiPath.Mail</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GetSha1" sap:VirtualizedContainerService.HintSize="318,580" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Añadimos el sha1 a la dt a partir de la web" DisplayName="Get Sha1" sap:VirtualizedContainerService.HintSize="318,448" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="test" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BrowserScope SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" Browser="[browser]" BrowserType="Chrome" DisplayName="Attach Browser" sap:VirtualizedContainerService.HintSize="586,944" sap2010:WorkflowViewState.IdRef="BrowserScope_1">
+    <ui:BrowserScope SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" Browser="[browser]" BrowserType="Chrome" DisplayName="Abrir navegador" sap:VirtualizedContainerService.HintSize="276,51" sap2010:WorkflowViewState.IdRef="BrowserScope_1">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
@@ -91,8 +92,8 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:NavigateTo Browser="{x:Null}" DisplayName="Navigate To" sap:VirtualizedContainerService.HintSize="510,59" sap2010:WorkflowViewState.IdRef="NavigateTo_1" Url="[sha1URL]" />
-            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="510,645" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+            <ui:NavigateTo Browser="{x:Null}" DisplayName="Ir a la web de sha1" sap:VirtualizedContainerService.HintSize="510,59" sap2010:WorkflowViewState.IdRef="NavigateTo_1" Url="[sha1URL]" />
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt]" DisplayName="Foreach de la dt de datos" sap:VirtualizedContainerService.HintSize="510,645" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
               <ui:ForEachRow.Body>
                 <ActivityAction x:TypeArguments="sd:DataRow">
                   <ActivityAction.Argument>
@@ -107,7 +108,7 @@
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into" EmptyField="True" sap:VirtualizedContainerService.HintSize="434,96" sap2010:WorkflowViewState.IdRef="TypeInto_1" Text="[item.item(&quot;WIID&quot;).ToString+ &quot;[k(enter)]&quot;]">
+                    <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Escribir el wiid en la web" EmptyField="True" sap:VirtualizedContainerService.HintSize="434,96" sap2010:WorkflowViewState.IdRef="TypeInto_1" Text="[item.item(&quot;WIID&quot;).ToString+ &quot;[k(enter)]&quot;]">
                       <ui:TypeInto.Target>
                         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="ceec7510-a0fc-4b0e-b964-ed19e3ea6452" Selector="&lt;html app='chrome.exe' url='*http://www.sha1-online.com/*' /&gt;&lt;webctrl tag='INPUT' css-selector='input[id=&amp;apos;textToHashId&amp;apos;]' /&gt;">
                           <ui:Target.TimeoutMS>
@@ -119,7 +120,7 @@
                         </ui:Target>
                       </ui:TypeInto.Target>
                     </ui:TypeInto>
-                    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text" sap:VirtualizedContainerService.HintSize="434,68" sap2010:WorkflowViewState.IdRef="GetValue_1">
+                    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Cogemos el texto que nos devuelve" sap:VirtualizedContainerService.HintSize="434,68" sap2010:WorkflowViewState.IdRef="GetValue_1">
                       <ui:GetValue.Target>
                         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d7e8b63f-7bd9-4e22-afc8-5188e2f28a41" Selector="&lt;html app='chrome.exe' url='*www.sha1-online.com/*' /&gt;&lt;webctrl tag='SPAN' css-selector='span[id=&amp;quot;result-sha1&amp;quot;]' /&gt;">
                           <ui:Target.TimeoutMS>
@@ -134,7 +135,7 @@
                         <OutArgument x:TypeArguments="x:String">[sha1]</OutArgument>
                       </ui:GetValue.Value>
                     </ui:GetValue>
-                    <ui:UpdateRowItem ColumnIndex="{x:Null}" ColumnName="Sha1" DisplayName="Update Row Item" sap:VirtualizedContainerService.HintSize="434,190" sap2010:WorkflowViewState.IdRef="UpdateRowItem_1" Row="[item]" Value="[sha1]" />
+                    <ui:UpdateRowItem ColumnIndex="{x:Null}" ColumnName="Sha1" DisplayName="Actualizar la dt añadiendo nuestro sha1" sap:VirtualizedContainerService.HintSize="434,190" sap2010:WorkflowViewState.IdRef="UpdateRowItem_1" Row="[item]" Value="[sha1]" />
                   </Sequence>
                 </ActivityAction>
               </ui:ForEachRow.Body>
@@ -149,9 +150,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:BrowserScope>
-    <ui:OutputDataTable DataTable="[dt]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="276,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" Text="[test]" />
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="276,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[test]" />
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="276,234" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt]" DisplayName="Hacemos un foreach para añadir los datos finales a la cola" sap:VirtualizedContainerService.HintSize="276,234" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>

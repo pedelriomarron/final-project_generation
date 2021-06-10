@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>927,4189</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>901,4119</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CreateExcel_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
@@ -76,20 +76,19 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CreateExcel" sap:VirtualizedContainerService.HintSize="911,4124" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Modulo para la creacion de excel" DisplayName="Create Excel" sap:VirtualizedContainerService.HintSize="911,3070" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="sd:DataTable" Name="dtColumns" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtTotales" />
       <Variable x:TypeArguments="x:Boolean" Name="exist" />
       <Variable x:TypeArguments="x:Int32" Name="total" />
-      <Variable x:TypeArguments="x:String" Name="testCo" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="869,61" sap2010:WorkflowViewState.IdRef="WriteLine_9" Text="[Environment.GetFolderPath(Environment.SpecialFolder.Desktop).ToString+&quot;\&quot;+&quot;informes_de_facturas&quot;+&quot;&quot;+path +&quot;\&quot;+ now().toString(dateFormat) +&quot;.xlsx&quot;]" />
-    <Assign sap:VirtualizedContainerService.HintSize="869,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Asignamos la variable final" sap:VirtualizedContainerService.HintSize="869,60" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[pathFinal]</OutArgument>
       </Assign.To>
@@ -97,29 +96,29 @@
         <InArgument x:TypeArguments="x:String">[Environment.GetFolderPath(Environment.SpecialFolder.Desktop).ToString+"\"+"informes_de_facturas"+""+path +"\"+ now().toString(dateFormat) +".xlsx"]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:BuildDataTable DataTable="[dtColumns]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="869,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Currency&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Total&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Currency&gt;Total&lt;/Currency&gt;&#xA;    &lt;Total&gt;0&lt;/Total&gt;&#xA;  &lt;/TableName&gt;&#xA;&lt;/NewDataSet&gt;" />
-    <ui:PathExists DisplayName="Path Exists" Exists="[exist]" sap:VirtualizedContainerService.HintSize="869,89" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[pathFinal]" PathType="File" />
-    <If Condition="[not exist]" sap:VirtualizedContainerService.HintSize="869,292" sap2010:WorkflowViewState.IdRef="If_1">
+    <ui:BuildDataTable DataTable="[dtTotales]" DisplayName="Creamos una dtPara definir los totales" sap:VirtualizedContainerService.HintSize="869,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Currency&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Total&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Currency&gt;Total&lt;/Currency&gt;&#xA;    &lt;Total&gt;0&lt;/Total&gt;&#xA;  &lt;/TableName&gt;&#xA;&lt;/NewDataSet&gt;" />
+    <ui:PathExists DisplayName="Comprobamos si existe el documento excel de este dia" Exists="[exist]" sap:VirtualizedContainerService.HintSize="869,89" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[pathFinal]" PathType="File" />
+    <If Condition="[not exist]" DisplayName="Si no existe Crearemos el documento añadiendo los totales" sap:VirtualizedContainerService.HintSize="869,292" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <ui:WriteRange StartingCell="{x:Null}" AddHeaders="True" DataTable="[dtColumns]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Total" WorkbookPath="[pathFinal]" />
+        <ui:WriteRange StartingCell="{x:Null}" AddHeaders="True" DataTable="[dtTotales]" DisplayName="Escribimos los totales " sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Total" WorkbookPath="[pathFinal]" />
       </If.Then>
     </If>
-    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dtColumns]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="869,87" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Total" WorkbookPath="[pathFinal]" />
-    <Assign sap:VirtualizedContainerService.HintSize="869,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dtTotales]" DisplayName="Leemos los totales" sap:VirtualizedContainerService.HintSize="869,87" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Total" WorkbookPath="[pathFinal]" />
+    <Assign DisplayName="Estabelecemos una variable numerica del total para ir llevando la cuenta" sap:VirtualizedContainerService.HintSize="869,60" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Int32">[total]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:Int32">[CInt(dtColumns.Rows(0).Item("Total").ToString)]</InArgument>
+        <InArgument x:TypeArguments="x:Int32">[CInt(dtTotales.Rows(0).Item("Total").ToString)]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="869,2109" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt]" DisplayName="Hacemos un foreach de una dt" sap:VirtualizedContainerService.HintSize="869,1675" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="item" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="835,1989" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="805,1555" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataTable" Name="dtTemp" />
               <Variable x:TypeArguments="sd:DataTable" Name="test" />
@@ -131,25 +130,24 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:BuildDataTable DataTable="[dtTemp]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="793,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_3" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Invoice_x0020_Id&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Amount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;WIID&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Sha1&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-            <ui:BuildDataTable DataTable="[dtTitle]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="793,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_5" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Invoice_x0020_Id&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Amount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;WIID&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Sha1&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;  &lt;TableName&gt;&#xD;&#xA;    &lt;Invoice_x0020_Id&gt;Invoice Id&lt;/Invoice_x0020_Id&gt;&#xD;&#xA;    &lt;Amount&gt;Amount&lt;/Amount&gt;&#xD;&#xA;    &lt;WIID&gt;WIID&lt;/WIID&gt;&#xD;&#xA;    &lt;Sha1&gt;Sha1&lt;/Sha1&gt;&#xD;&#xA;  &lt;/TableName&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
-            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="793,539" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+            <ui:BuildDataTable DataTable="[dtTemp]" DisplayName="Creamos una variable temporal para ir añadiendo datos al excel" sap:VirtualizedContainerService.HintSize="763,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_3" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Invoice_x0020_Id&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Amount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;WIID&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Sha1&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+            <ui:BuildDataTable DataTable="[dtTitle]" DisplayName="Creamos una dt para añadir los titulos" sap:VirtualizedContainerService.HintSize="763,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_5" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Invoice_x0020_Id&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Amount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;WIID&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Sha1&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Invoice_x0020_Id&gt;Invoice Id&lt;/Invoice_x0020_Id&gt;&#xA;    &lt;Amount&gt;Amount&lt;/Amount&gt;&#xA;    &lt;WIID&gt;WIID&lt;/WIID&gt;&#xA;    &lt;Sha1&gt;Sha1&lt;/Sha1&gt;&#xA;  &lt;/TableName&gt;&#xA;&lt;/NewDataSet&gt;" />
+            <TryCatch DisplayName="Añadir titulos si la hoja no existe" sap:VirtualizedContainerService.HintSize="763,406" sap2010:WorkflowViewState.IdRef="TryCatch_1">
               <TryCatch.Try>
-                <Sequence sap:VirtualizedContainerService.HintSize="376,280" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence DisplayName="Probaremos a saber si existe la hoja con la moneda indicada" sap:VirtualizedContainerService.HintSize="376,179" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[test]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="[item.item(&quot;Currency&quot;).ToString]" WorkbookPath="[pathFinal]" />
-                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[test.Rows.Count.ToString]" />
+                  <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[test]" DisplayName="Leemos la hoja" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="[item.item(&quot;Currency&quot;).ToString]" WorkbookPath="[pathFinal]" />
                 </Sequence>
               </TryCatch.Try>
               <TryCatch.Catches>
-                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,377" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
@@ -157,49 +155,44 @@
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                     </ActivityAction.Argument>
-                    <Sequence sap:VirtualizedContainerService.HintSize="376,308" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                    <Sequence DisplayName="Si la hoja no existe la crearemos, añadiendole los titulos" sap:VirtualizedContainerService.HintSize="376,114" sap2010:WorkflowViewState.IdRef="Sequence_4">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="Jejej" />
-                      <ui:WriteRange StartingCell="{x:Null}" AddHeaders="False" DataTable="[dtTitle]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="WriteRange_3" SheetName="[item.item(&quot;Currency&quot;).ToString]" WorkbookPath="[pathFinal]" />
+                      <ui:WriteRange StartingCell="{x:Null}" AddHeaders="False" DataTable="[dtTitle]" DisplayName="Añadimos los titulos" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="WriteRange_3" SheetName="[item.item(&quot;Currency&quot;).ToString]" WorkbookPath="[pathFinal]" />
                     </Sequence>
                   </ActivityAction>
                 </Catch>
               </TryCatch.Catches>
             </TryCatch>
-            <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{item.Item(&quot;Invoice Id&quot;).ToString, item.Item(&quot;Amount&quot;).ToString &amp;&quot; &quot; &amp;item.Item(&quot;Currency&quot;).ToString, item.Item(&quot;WIID&quot;).ToString, item.Item(&quot;Sha1&quot;).ToString}]" DataTable="[dtTemp]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="793,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
-            <ui:AppendRange DataTable="[dtTemp]" DisplayName="Append Range" sap:VirtualizedContainerService.HintSize="793,115" sap2010:WorkflowViewState.IdRef="AppendRange_1" SheetName="[item.item(&quot;Currency&quot;).ToString]" WorkbookPath="[pathFinal]" />
-            <ui:BuildDataTable DataTable="[dtTemp]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="793,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_4" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Invoice_x0020_Id&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Amount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Currency&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;WIID&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Sha1&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Invoice_x0020_Id&gt;Invoice Id&lt;/Invoice_x0020_Id&gt;&#xA;    &lt;Amount&gt;Amount&lt;/Amount&gt;&#xA;    &lt;Currency&gt;Currency&lt;/Currency&gt;&#xA;    &lt;WIID&gt;WIID&lt;/WIID&gt;&#xA;    &lt;Sha1&gt;Sha1&lt;/Sha1&gt;&#xA;  &lt;/TableName&gt;&#xA;&lt;/NewDataSet&gt;" />
-            <ui:LookupDataTable CellValue="{x:Null}" LookupColumnName="{x:Null}" LookupDataColumn="{x:Null}" TargetColumnIndex="{x:Null}" TargetColumnName="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[dtColumns]" DisplayName="Lookup Data Table" sap:VirtualizedContainerService.HintSize="793,22" sap2010:WorkflowViewState.IdRef="LookupDataTable_1" LookupColumnIndex="[0]" LookupValue="[item.item(&quot;Currency&quot;).ToString.Trim]" RowIndex="[currencyIndex]" />
-            <If Condition="[currencyIndex &lt; 0]" sap:VirtualizedContainerService.HintSize="793,541" sap2010:WorkflowViewState.IdRef="If_2">
+            <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{item.Item(&quot;Invoice Id&quot;).ToString, item.Item(&quot;Amount&quot;).ToString &amp;&quot; &quot; &amp;item.Item(&quot;Currency&quot;).ToString, item.Item(&quot;WIID&quot;).ToString, item.Item(&quot;Sha1&quot;).ToString}]" DataTable="[dtTemp]" DisplayName="Añadimos a la dt temporal los datos con el formato que queremos" sap:VirtualizedContainerService.HintSize="763,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+            <ui:AppendRange DataTable="[dtTemp]" DisplayName="Añadimos la dt temporal al excel con append" sap:VirtualizedContainerService.HintSize="763,115" sap2010:WorkflowViewState.IdRef="AppendRange_1" SheetName="[item.item(&quot;Currency&quot;).ToString]" WorkbookPath="[pathFinal]" />
+            <ui:LookupDataTable CellValue="{x:Null}" LookupColumnName="{x:Null}" LookupDataColumn="{x:Null}" TargetColumnIndex="{x:Null}" TargetColumnName="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[dtTotales]" DisplayName="Buscaremos en totales si la moneda esta ya dentro" sap:VirtualizedContainerService.HintSize="763,22" sap2010:WorkflowViewState.IdRef="LookupDataTable_1" LookupColumnIndex="[0]" LookupValue="[item.item(&quot;Currency&quot;).ToString.Trim]" RowIndex="[currencyIndex]" />
+            <If Condition="[currencyIndex &lt; 0]" sap:VirtualizedContainerService.HintSize="763,440" sap2010:WorkflowViewState.IdRef="If_2">
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="272,215" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <Sequence DisplayName="Si la moneda no existe en el excel" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_5">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{item.item(&quot;Currency&quot;).ToString, item.Item(&quot;Amount&quot;).ToString}]" DataTable="[dtColumns]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="230,22" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
-                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="230,61" sap2010:WorkflowViewState.IdRef="WriteLine_7" Text="[&quot;en ads&quot;+item.item(&quot;Currency&quot;).ToString &amp; item.Item(&quot;Amount&quot;).ToString]" />
+                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{item.item(&quot;Currency&quot;).ToString, item.Item(&quot;Amount&quot;).ToString}]" DataTable="[dtTotales]" DisplayName="Añadimos la moneda con el amount del valor actual" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence sap:VirtualizedContainerService.HintSize="476,383" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <Sequence DisplayName="Si la moneda esta en el excel" sap:VirtualizedContainerService.HintSize="476,282" sap2010:WorkflowViewState.IdRef="Sequence_7">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:UpdateRowItem ColumnName="{x:Null}" ColumnIndex="1" DisplayName="Update Row Item" sap:VirtualizedContainerService.HintSize="434,190" sap2010:WorkflowViewState.IdRef="UpdateRowItem_2" Row="[dtColumns.Rows(currencyIndex)]" Value="[CInt(item.item(&quot;Amount&quot;).ToString) + CInt(dtColumns.Rows(currencyIndex).Item(&quot;Total&quot;))]" />
-                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="434,61" sap2010:WorkflowViewState.IdRef="WriteLine_8" Text="en update" />
+                  <ui:UpdateRowItem ColumnName="{x:Null}" ColumnIndex="1" DisplayName="Actualizamos el valor sumando el amount actual" sap:VirtualizedContainerService.HintSize="434,190" sap2010:WorkflowViewState.IdRef="UpdateRowItem_2" Row="[dtTotales.Rows(currencyIndex)]" Value="[CInt(item.item(&quot;Amount&quot;).ToString) + CInt(dtTotales.Rows(currencyIndex).Item(&quot;Total&quot;))]" />
                 </Sequence>
               </If.Else>
             </If>
-            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="793,61" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[&quot;curr&quot;&amp;currencyIndex]" />
-            <Assign sap:VirtualizedContainerService.HintSize="793,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <Assign DisplayName="Sumamos al total el amount actual" sap:VirtualizedContainerService.HintSize="763,60" sap2010:WorkflowViewState.IdRef="Assign_3">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:Int32">[total]</OutArgument>
               </Assign.To>
@@ -211,22 +204,7 @@
         </ActivityAction>
       </ui:ForEachRow.Body>
     </ui:ForEachRow>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="869,347" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,269" sap2010:WorkflowViewState.IdRef="Sequence_6">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:WriteCell Cell="B2" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="WriteCell_1" SheetName="Total" Text="[total.ToString]" WorkbookPath="[pathFinal]" />
-          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;Todos&quot;, total.ToString}]" DataTable="[dtColumns]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddDataRow_3" />
-        </Sequence>
-      </ui:CommentOut.Body>
-    </ui:CommentOut>
-    <ui:UpdateRowItem ColumnName="{x:Null}" ColumnIndex="1" DisplayName="Update Row Item" sap:VirtualizedContainerService.HintSize="869,190" sap2010:WorkflowViewState.IdRef="UpdateRowItem_3" Row="[dtColumns.Rows(0)]" Value="[total.ToString]" />
-    <ui:WriteRange AddHeaders="True" DataTable="[dtColumns]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="869,115" sap2010:WorkflowViewState.IdRef="WriteRange_4" SheetName="Total" StartingCell="A1" WorkbookPath="[pathFinal]" />
-    <ui:OutputDataTable DataTable="[dtColumns]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="869,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_2" Text="[testCo]" />
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="869,61" sap2010:WorkflowViewState.IdRef="WriteLine_6" Text="[testCo]" />
+    <ui:UpdateRowItem ColumnName="{x:Null}" ColumnIndex="1" DisplayName="En la dtTotales actualizamos el total" sap:VirtualizedContainerService.HintSize="869,190" sap2010:WorkflowViewState.IdRef="UpdateRowItem_3" Row="[dtTotales.Rows(0)]" Value="[total.ToString]" />
+    <ui:WriteRange AddHeaders="True" DataTable="[dtTotales]" DisplayName="Ya añadimos todos los totales dinamicamente al excel" sap:VirtualizedContainerService.HintSize="869,115" sap2010:WorkflowViewState.IdRef="WriteRange_4" SheetName="Total" StartingCell="A1" WorkbookPath="[pathFinal]" />
   </Sequence>
 </Activity>

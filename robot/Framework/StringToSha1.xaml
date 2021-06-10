@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>751,718</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>751,618</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>StringToSha1_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="42">
@@ -72,7 +72,7 @@
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="StringToSha1" sap:VirtualizedContainerService.HintSize="358,653" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="StringToSha1" sap:VirtualizedContainerService.HintSize="358,552" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ssc:SHA1Managed" Default="[new System.Security.Cryptography.SHA1Managed()]" Name="sha1" />
       <Variable x:TypeArguments="s:Byte[]" Default="[sha1.ComputeHash(System.Text.Encoding.UTF8.GetBytes(input))]" Name="hash" />
@@ -105,7 +105,6 @@
         </ActivityAction>
       </ui:ForEach.Body>
     </ui:ForEach>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="316,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[sb.ToString]" />
     <Assign sap:VirtualizedContainerService.HintSize="316,60" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[sha1Text]</OutArgument>
