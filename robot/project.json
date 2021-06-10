@@ -13,7 +13,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "21.4.3.0",
-  "projectVersion": "1.0.0",
+  "projectVersion": "1.0.7",
   "runtimeOptions": {
     "autoDispose": false,
     "isPausable": true,
@@ -45,6 +45,18 @@
     {
       "filePath": "Main.xaml",
       "uniqueId": "2ab37fb0-25c2-4353-9f70-e865cb3ba1da",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "Dispatcher.xaml",
+      "uniqueId": "09c3c36b-9379-4658-97bb-fbfc873d503a",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "Performance.xaml",
+      "uniqueId": "42f9bb85-c9c1-4992-951b-d0b287b8eec6",
       "input": [],
       "output": []
     }

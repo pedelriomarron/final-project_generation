@@ -1,5 +1,8 @@
 {
-var1:"Hola",
 debug:"true",
+folderName:"proyecto_final_generation",
+credentialsName:"login",
+pathExcel:"",
+dateFormat:"dd-MM-yyyy"
 
 }
